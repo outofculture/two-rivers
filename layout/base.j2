@@ -31,21 +31,21 @@
   <meta name="viewport" content="{{ resource.meta.viewport }}">
 
   {% block favicons %}
-  <!-- Place favicon.ico & apple-touch-icon.png
-        in the root of your domain and delete these references -->
-  <link rel="shortcut icon" href="{{ media_url('/favicon.ico') }}">
-  <link rel="apple-touch-icon" href="{{ media_url('/apple-touch-icon.png') }}">
+      <!-- Place favicon.ico & apple-touch-icon.png
+            in the root of your domain and delete these references -->
+      <link rel="shortcut icon" href="{{ media_url('/favicon.ico') }}">
+      <link rel="apple-touch-icon" href="{{ media_url('/apple-touch-icon.png') }}">
   {% endblock favicons %}
 
   {% block css %}
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{ media_url('css/site.css') }}">
-  <link rel="stylesheet" href="{{ media_url('css/syntax.css') }}">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{ media_url('css/site.css') }}">
+      <link rel="stylesheet" href="{{ media_url('css/syntax.css') }}">
   {% endblock css %}
 
   {% block headjs %}
-  <!-- All JavaScript at the bottom, except for Modernizr which
+    <!-- All JavaScript at the bottom, except for Modernizr which
         enables HTML5 elements & feature detects -->
     <script src="{{ media_url('js/libs/modernizr-1.7.min.js') }}"></script>
   {% endblock headjs %}
@@ -58,12 +58,12 @@
       <div id="main" role="main">
           <header class="banner clearfix">
           {% block header -%}
-<img src="/media/images/logo200.gif">
-            <h1>Two Rivers Aikikai</h1>
+              <img src="/media/images/logo200.gif">
+              <h1>Two Rivers Aikikai</h1>
           {%- endblock %}
           {% block nav %}
-          {% from "macros.j2" import render_nav with context %}
-          {{ render_nav(menu, 'main_nav') }}
+              {% from "macros.j2" import render_nav with context %}
+              {{ render_nav(menu, 'main_nav') }}
           {% endblock %}
           </header>
           <section class="content">
@@ -77,27 +77,28 @@
       Powered by <a href="http://ringce.com/hyde">hyde</a>.
   </footer>
   {% endblock content%}
+
   {% block js %}
-  <!-- Javascript at the bottom for fast page loading -->
-  {% block jquery %}
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.11.2.min.js">\x3C/script>')</script>
-  {% endblock jquery %}
+      <!-- Javascript at the bottom for fast page loading -->
+      {% block jquery %}
+          <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+          <script>window.jQuery || document.write('<script src="js/libs/jquery-1.11.2.min.js">\x3C/script>')</script>
+      {% endblock jquery %}
 
-  {% block scripts %}
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  {% endblock scripts %}
+      {% block scripts %}
+          <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+      {% endblock scripts %}
 
 
-  <!--[if lt IE 7 ]>
-    <script src="js/libs/dd_belatedpng.js"></script>
-    <script>DD_belatedPNG.fix('img, .png_bg'); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
-  <![endif]-->
+      <!--[if lt IE 7 ]>
+        <script src="js/libs/dd_belatedpng.js"></script>
+        <script>DD_belatedPNG.fix('img, .png_bg'); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+      <![endif]-->
 
-  {% block analytics %}
-  {% include "analytics.j2" %}
-  {% endblock analytics %}
+      {% block analytics %}
+          {% include "analytics.j2" %}
+      {% endblock analytics %}
 
   {% endblock js %}
 </body>
