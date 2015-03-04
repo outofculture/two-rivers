@@ -40,7 +40,6 @@
   {% block css %}
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-      <link rel="stylesheet" href="{{ media_url('css/site.css') }}">
       <link rel="stylesheet" href="{{ media_url('css/syntax.css') }}">
   {% endblock css %}
 
@@ -56,25 +55,62 @@
   <div id="container">
       {% block container %}
       <div id="main" role="main">
-          <header class="banner clearfix">
-          {% block header -%}
-              <img src="/media/images/logo200.gif">
-              <h1>Two Rivers Aikikai</h1>
-          {%- endblock %}
-          {% block nav %}
-              {% from "macros.j2" import render_nav with context %}
-              {{ render_nav(menu, 'main_nav') }}
-          {% endblock %}
-          </header>
+          <nav class="navbar">
+              <ul>
+                  {% for item in menu -%}
+                  {% set active = False -%}
+                  {% if item.type == 'page' -%}
+                      {% set active = (resource.url ==
+                          site.content.resource_from_relative_path(item.url).url) -%}
+                  {% else -%}
+                      {% set active = (node ==
+                          site.content.node_from_relative_path(item.url)) -%}
+                  {%- endif %}
+                  {% set classes = ['button', 'white'] -%}
+                  {% do classes.append('active') if active -%}
+                  {% do classes.append(item.css_class) if item.css_class -%}
+                  <li>
+                      <a title="{{ item.description }}"
+                          class="{{ classes|join(' ') }}"
+                          href="{{ content_url(item.url) }}">
+                          {{ item.name }}
+                      </a>
+                  </li>
+                  {%- endfor %}
+              </ul>
+              {% block header -%}
+                  <img src="{{ media_url('images/logo200.gif') }}" class="pull-left">
+                  <h1>Two Rivers Aikikai</h1>
+              {%- endblock %}
+              {% block nav %}
+                  {% from "macros.j2" import render_nav with context %}
+                  {{ render_nav(menu, 'navbar') }}
+              {% endblock %}
+          </nav>
+
           <section class="content">
           {% block main %}
           {% endblock main %}
+          </section>
+
+          {% from "macros.j2" import render_excerpt with context %}
+          <section class="blog_excerpt">
+          {% set latest = site.content.walk_resources_sorted_by_time()|first %}
+
+          {% if latest -%}
+          {{ render_excerpt(latest, 'post') }}
+
+          <a class="button white medium"
+              href="{{ content_url(latest.url) }}">Read more&hellip;</a>
+
+          {%- endif %}
+
           </section>
       </div>
     {% endblock container %}
   </div> <!--! end of #container -->
   <footer>
-      Powered by <a href="http://ringce.com/hyde">hyde</a>.
+      Powered by <a href="http://hyde.github.com/">hyde</a>.
   </footer>
   {% endblock content%}
 
@@ -89,7 +125,6 @@
       {% block scripts %}
           <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
       {% endblock scripts %}
-
 
       <!--[if lt IE 7 ]>
         <script src="js/libs/dd_belatedpng.js"></script>

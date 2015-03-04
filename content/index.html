@@ -5,20 +5,26 @@ title: Two Rivers Aikikai
 description: Home page for the BASIC hyde template
 ---
 
-<a href="adults.html">Adults Classes</a>
-<a href="kids.html">Kids Classes</a>
-<a href="visitors.html">Information for Visitors</a>
-
-{% from "macros.j2" import render_excerpt with context %}
-<section class="blog_excerpt">
-{% set latest = site.content.walk_resources_sorted_by_time()|first %}
-
-{% if latest -%}
-{{ render_excerpt(latest, 'post') }}
-
-<a class="button white medium"
-    href="{{ content_url(latest.url) }}">Read more&hellip;</a>
-
-{%- endif %}
-
-</section>
+<div class="jumbotron">Large image goes here (with video, too)</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="">
+            <p>blurb about adults</p>
+            <a href="{{content_url('adults.html')}}"
+                    class="btn btn-default">Read more</a>
+        </div>
+        <div class="col-md-4">
+            <img src="">
+            <p>blurb about kids</p>
+            <a href="{{content_url('kids.html')}}"
+                    class="btn btn-default">Read more</a>
+        </div>
+        <div class="col-md-4">
+            <img src="">
+            <p>blurb about visitors</p>
+            <a href="{{content_url('visitors.html')}}"
+                    class="btn btn-default">Read more</a>
+        </div>
+    </div>
+</div>

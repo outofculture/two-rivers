@@ -347,8 +347,7 @@ nav.post_nav{
     width: 124px;
     margin-left: -186px;
     font-size: 12px;
-    padding: 12px;
-    padding-right: 24px;
+    padding: 12px 24px 12px 12px;
     -moz-box-shadow: 0px 2px 4px #ccc; /* FF3.5+ */
     -webkit-box-shadow: 0px 2px 4px #ccc; /* Saf3.0+, Chrome */
           box-shadow: 0px 2px 4px #ccc; /* Opera 10.5, IE 9.0 */
@@ -386,7 +385,7 @@ a.next{
     margin-bottom: 12px;
 }
 
-a.next{ float: right };
+a.next{ float: right; }
 
 a.backlink:hover, a.prev:hover, a.next:hover{
     color: #222;
