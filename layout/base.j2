@@ -97,20 +97,19 @@
           <section class="blog_excerpt">
               {% set latest = site.content.blog.walk_resources_sorted_by_time()|first %}
 
-          {% if latest -%}
-          {{ render_excerpt(latest, 'post') }}
+              {% if latest -%}
+              {{ render_excerpt(latest, 'post') }}
 
-          <a class="button white medium"
-              href="{{ content_url(latest.url) }}">Read more&hellip;</a>
+              <a class="button white medium"
+                  href="{{ content_url(latest.url) }}">Read more&hellip;</a>
 
-          {%- endif %}
-
+              {%- endif %}
           </section>
       </div>
     {% endblock container %}
   </div> <!--! end of #container -->
   <footer>
-      Powered by <a href="http://hyde.github.com/">hyde</a>.
+
   </footer>
   {% endblock content%}
 
