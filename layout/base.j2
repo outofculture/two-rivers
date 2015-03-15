@@ -39,7 +39,8 @@
 
   {% block css %}
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+{#      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">#}
+      <link rel="stylesheet" href="{{ media_url('css/bootstrap.min.css') }}">
       <link rel="stylesheet" href="{{ media_url('css/syntax.css') }}">
   {% endblock css %}
 
@@ -118,15 +119,16 @@
       {% block jquery %}
           <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
           <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
-          <script>window.jQuery || document.write('<script src="js/libs/jquery-1.11.2.min.js">\x3C/script>')</script>
+          <script>window.jQuery || document.write('<script src="{{ media_url('js/libs/jquery-1.11.2.min.js') }}">\x3c/script>')</script>
       {% endblock jquery %}
 
       {% block scripts %}
-          <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+{#          <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>#}
+          <script src="{{ media_url('js/libs/bootstrap.min.js') }}"></script>
       {% endblock scripts %}
 
       <!--[if lt IE 7 ]>
-        <script src="js/libs/dd_belatedpng.js"></script>
+        <script src="{{ media_url('js/libs/dd_belatedpng.js') }}"></script>
         <script>DD_belatedPNG.fix('img, .png_bg'); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
       <![endif]-->
 
