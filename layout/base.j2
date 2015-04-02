@@ -56,37 +56,18 @@
   <div id="container">
       {% block container %}
       <div id="main" role="main">
-          <nav class="navbar">
-              <ul>
-                  {% for item in menu -%}
-                  {% set active = False -%}
-                  {% if item.type == 'page' -%}
-                      {% set active = (resource.url ==
-                          site.content.resource_from_relative_path(item.url).url) -%}
-                  {% else -%}
-                      {% set active = (node ==
-                          site.content.node_from_relative_path(item.url)) -%}
-                  {%- endif %}
-                  {% set classes = ['button', 'white'] -%}
-                  {% do classes.append('active') if active -%}
-                  {% do classes.append(item.css_class) if item.css_class -%}
-                  <li>
-                      <a title="{{ item.description }}"
-                          class="{{ classes|join(' ') }}"
-                          href="{{ content_url(item.url) }}">
-                          {{ item.name }}
+          <nav class="navbar" role="navigation">
+              <div class="container-fluid">
+                  <div class="navbar-header">
+                      <a href="{{ content_url('index.html') }}" class="navbar-brand">
+                          <img src="{{ media_url('images/logo200.gif') }}">
                       </a>
-                  </li>
-                  {%- endfor %}
-              </ul>
-              {% block header -%}
-                  <img src="{{ media_url('images/logo200.gif') }}" class="pull-left">
-                  <h1>Two Rivers Aikikai</h1>
-              {%- endblock %}
-              {% block nav %}
+
+                      Two Rivers Aikikai
+                  </div>
                   {% from "macros.j2" import render_nav with context %}
                   {{ render_nav(menu, 'navbar') }}
-              {% endblock %}
+              </div>
           </nav>
 
           <section class="content">

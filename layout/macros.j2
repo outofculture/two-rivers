@@ -11,30 +11,48 @@
 {% endmacro %}
 
 {% macro render_nav(menu, cls=None) -%}
-{% if menu -%}
-<nav {{'class='~cls if cls }}>
-    <ul>
-        {% for item in menu -%}
-        {% set active = False -%}
-        {% if item.type == 'page' -%}
-            {% set active = (resource.url ==
-                site.content.resource_from_relative_path(item.url).url) -%}
-        {% else -%}
-            {% set active = (node ==
-                site.content.node_from_relative_path(item.url)) -%}
-        {%- endif %}
-        {% set classes = ['button', 'white'] -%}
-        {% do classes.append('active') if active -%}
-        {% do classes.append(item.css_class) if item.css_class -%}
-        <li>
-            <a title="{{ item.description }}"
-                class="{{ classes|join(' ') }}"
-                href="{{ content_url(item.url) }}">
-                {{ item.name }}
-            </a>
-        </li>
-        {%- endfor %}
-    </ul>
-</nav>
-{%- endif %}
+    {% if menu -%}
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            {% for item in menu -%}
+                {% set classes = [] -%}
+                {% set active = False -%}
+                {% if item.type == 'page' -%}
+                    {% set active = (resource.url ==
+                        site.content.resource_from_relative_path(item.url).url) -%}
+                    {% do classes.append('active') if active -%}
+                    <li>
+                        <a title="{{ item.description }}"
+                            class="{{ classes|join(' ') }}"
+                            href="{{ content_url(item.url) }}">
+                            {{ item.name }}
+                        </a>
+                    </li>
+                {% else -%} {# submenu #}
+                    <li class="dropdown">
+                        <a class="dropdown-toggle"
+                            aria-expanded="false"
+                            role="button"
+                            data-toggle="dropdown"
+                            href="#"
+                            title="{{ item.description }}">
+                            {{ item.name }}
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            {% for subitem in item.submenu %}
+                                <li>
+                                    <a title="{{ subitem.description }}"
+                                        class="{{ classes|join(' ') }}"
+                                        href="{{ content_url(subitem.url) }}">
+                                        {{ subitem.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {%- endif %}
+            {%- endfor %}
+        </ul>
+    </div>
+    {%- endif %}
 {%- endmacro %}

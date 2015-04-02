@@ -11,24 +11,30 @@ plugins:
     - hyde.ext.plugins.text.TextlinksPlugin
 context:
     data:
-        tweet_via: ringce
         menu:
             -
                 name: About Us
                 description: About Us
-                css_class: about
-                type: page
-                url: about.html
+                type: submenu
+                submenu:
+                    -
+                        name: About Us
+                        description: About Us
+                        type: page
+                        url: about.html
+                    -
+                        name: Instructors
+                        description: Instructors
+                        type: page
+                        url: instructors.html
             -
                 name: Events
                 description: Upcoming Events
-                css_class: events
                 type: node
                 url: events
             -
                 name: Schedule
                 description: Dojo Schedule
-                css_class: schedule
                 type: page
                 url: schedule.html
 meta:
