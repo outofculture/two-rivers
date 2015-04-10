@@ -42,6 +42,7 @@
 {#      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">#}
       <link rel="stylesheet" href="{{ media_url('css/bootstrap.min.css') }}">
       <link rel="stylesheet" href="{{ media_url('css/syntax.css') }}">
+      <link rel="stylesheet" href="{{ media_url('css/site.css') }}">
   {% endblock css %}
 
   {% block headjs %}
@@ -59,10 +60,12 @@
           <nav class="navbar" role="navigation">
               <div class="container-fluid">
                   <div class="navbar-header">
-                      <a href="{{ content_url('index.html') }}" class="navbar-brand">
-                          <img src="{{ media_url('images/logo200.gif') }}">
-                      </a>
-
+                      <div class="navbar-brand">
+                          <a href="/" class="">
+                              <img src="{{ media_url('images/logo200.gif') }}"
+                                   alt="Two Rivers Aikikai">
+                          </a>
+                      </div>
                       Two Rivers Aikikai
                   </div>
                   {% from "macros.j2" import render_nav with context %}
