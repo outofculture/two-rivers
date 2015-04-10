@@ -18,20 +18,45 @@ context:
                 type: submenu
                 submenu:
                     -
-                        name: About Us
-                        description: About Us
+                        name: Philosophy
+                        description:
                         type: page
-                        url: about.html
+                        url: philosophy.html
                     -
                         name: Instructors
                         description: Instructors
                         type: page
                         url: instructors.html
+                    -
+                        name: Resources
+                        description: General Resources
+                        type: page
+                        url: resources.html
+            -
+                name: Classes
+                description: Class descriptions
+                type: submenu
+                submenu:
+                    -
+                        name: Adults
+                        description: Classes for adults
+                        type: page
+                        url: adults.html
+                    -
+                        name: Kids
+                        description: Classes for Kids
+                        type: page
+                        url: kids.html
+                    -
+                        name: Iaido
+                        description: Iaido classes
+                        type: page
+                        url: iaido.html
             -
                 name: Events
                 description: Upcoming Events
-                type: node
-                url: events
+                type: page
+                url: events/
             -
                 name: Schedule
                 description: Dojo Schedule
