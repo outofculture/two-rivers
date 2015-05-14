@@ -12,7 +12,7 @@
 
 {% macro render_nav(menu, cls=None) -%}
     {% if menu -%}
-    <div class="navbar-collapse collapse">
+    <div class="navbar-collapse collapse" id="small-menu-collapse">
         <ul class="nav navbar-nav navbar-right">
             {% for item in menu -%}
                 {% set classes = [] -%}
