@@ -51,14 +51,15 @@ body {
     font-size: 50px;
 
 }
-#jumbotron-video {
-    display: none;
-}
 .initial-overlay {
+    position: relative;
     text-align: center;
     height: 315px;
     vertical-align: middle;
     background-image: url('../images/jumbowide-tokonoma.jpg');
     background-repeat: no-repeat;
     background-position: center center;
+}
+#jumbotron-video {
+    display: none;
 }

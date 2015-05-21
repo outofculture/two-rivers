@@ -3,7 +3,8 @@
 
     $(function() {
         $('#show-jumbotron-video').click(function() {
-            alert('show vid pushed');
+            $('#show-jumbotron-video').hide();
+            $('#jumbotron-video').show();
         });
     });
 })();
