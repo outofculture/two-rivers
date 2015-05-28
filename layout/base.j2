@@ -87,6 +87,18 @@
           {% endblock main %}
           </section>
 
+      </div>
+    {% endblock container %}
+  </div> <!--! end of #container -->
+  <footer class="container-fluid">
+  <div class="row">
+      <div class="col-sm-4">
+          <p>Some content here</p>
+          <p>Some more content here</p>
+          <p>Some more content here</p>
+          <p>Some more content here</p>
+      </div>
+      <div class="col-sm-4">
           {% from "macros.j2" import render_excerpt with context %}
           <section class="blog_excerpt">
               {% set latest = site.content.blog.walk_resources_sorted_by_time()|first %}
@@ -100,10 +112,12 @@
               {%- endif %}
           </section>
       </div>
-    {% endblock container %}
-  </div> <!--! end of #container -->
-  <footer>
-
+      <div class="col-sm-4">
+          <p>Some more content here</p>
+          <p>Some more content here</p>
+          <p>Some more content here</p>
+      </div>
+  </div>
   </footer>
   {% endblock content%}
 
