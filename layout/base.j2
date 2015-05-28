@@ -99,6 +99,7 @@
           <p>Some more content here</p>
       </div>
       <div class="col-sm-4">
+          <p>Recent blog snippets here</p>
           {% from "macros.j2" import render_excerpt with context %}
           <section class="blog_excerpt">
               {% set latest = site.content.blog.walk_resources_sorted_by_time()|first %}
